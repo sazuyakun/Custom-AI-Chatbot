@@ -1,6 +1,7 @@
 Flask
 Flask-RESTful
 langchain
-langchain_community
+langchain-community
+langchain-core
 faiss-cpu
 requests
