@@ -1,0 +1,6 @@
+Flask
+Flask-RESTful
+langchain
+langchain_community
+faiss-cpu
+requests
