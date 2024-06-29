@@ -5,7 +5,7 @@ The chatbot is designed to answer questions based on a specific context, utilizi
 
 Make sure to have Ollama installed and running in your local device with "llama3". If not installed, then use this [link](https://ollama.com/) to download it and run the following command in your favorite terminal.
 ```
-ollama run llama3
+ollama pull llama3
 ```
 ## Getting Started
 1. Clone the repository:
