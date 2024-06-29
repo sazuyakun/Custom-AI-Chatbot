@@ -1,6 +1,5 @@
 import pickle
 from flask import Flask, request, jsonify, render_template
-# from flask_restful import Api, Resource
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import OllamaEmbeddings
