@@ -17,9 +17,7 @@ data = loader.load()
 text_splitter = RecursiveCharacterTextSplitter()
 docs = text_splitter.split_documents(data)
 
-embeddings = OllamaEmbeddings(
-    model="llama3"
-)
+embeddings = OllamaEmbeddings(model="llama3")
 
 # vector = FAISS.from_documents(docs, embeddings)
 # import pickle
@@ -28,9 +26,7 @@ embeddings = OllamaEmbeddings(
 with open('FAISS_Store.pkl', 'rb') as file:
     vector = pickle.load(file)
 
-llm = Ollama(
-    model="llama3"
-)
+llm = Ollama(model="llama3")
 
 prompt = ChatPromptTemplate.from_template(
     """Answer the following question based only on the provided context:
@@ -56,22 +52,6 @@ def prompt_answer(prompt):
 
 
 app = Flask(__name__)
-# api = Api(app)
-
-# class Chatbot(Resource):
-#     def post(self):
-#         # Parse the input data
-#         data = request.get_json()
-#         question = data.get('question')
-        
-#         # Get the response from the retrieval chain
-#         response = retrieval_chain.invoke({
-#             "input": question
-#         })
-        
-#         return jsonify({'response': response})
-    
-# api.add_resource(Chatbot, '/chatbot')
 
 @app.route('/', methods=['GET'])
 def home():
@@ -84,7 +64,10 @@ def chat():
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
     answer = prompt_answer(prompt)
-    return jsonify({"answer": answer})
+    return jsonify({
+        "answer": answer
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
