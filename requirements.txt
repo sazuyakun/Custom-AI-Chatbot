@@ -6,3 +6,4 @@ langchain-core
 langchain-text-splitters
 faiss-cpu
 requests
+beautifulsoup4
