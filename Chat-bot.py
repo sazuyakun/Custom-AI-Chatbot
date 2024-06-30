@@ -1,5 +1,6 @@
 import pickle
 from flask import Flask, request, jsonify, render_template
+from flask_restful import Api, Resource
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import OllamaEmbeddings
@@ -51,21 +52,24 @@ def prompt_answer(prompt):
 
 
 app = Flask(__name__)
+api = Api(app)
 
 @app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
 
-@app.route('/chat', methods=['POST'])
-def chat():
-    data = request.json
-    prompt = data.get('prompt')
-    if not prompt:
-        return jsonify({"error": "No prompt provided"}), 400
-    answer = prompt_answer(prompt)
-    return jsonify({
-        "answer": answer
-    })
+class Chat(Resource):
+    def post(self):
+        data = request.json
+        prompt = data.get('prompt')
+        if not prompt:
+            return jsonify({"error": "No prompt provided"}), 400
+        answer = prompt_answer(prompt)
+        return jsonify({
+            "answer": answer
+        })
+
+api.add_resource(Chat, '/chat')
 
 if __name__ == '__main__':
     app.run(debug=True)
