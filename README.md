@@ -8,6 +8,7 @@ Make sure to have Ollama installed and running in your local device with "llama3
 ollama pull llama3
 ```
 ## Getting Started
+Note: Make sure to have python installed in your device to use this. Download [link](https://www.python.org/downloads/)
 1. Clone the repository:
 ```
 git clone https://github.com/sazuyakun/Custom-AI-Chatbot
