@@ -1,5 +1,5 @@
 
-# Custom AI Chatbot
+# WebInChat : Custom AI Chatbot
 
 The chatbot is designed to answer questions based on a specific context, utilizing Langchain for document embedding and retrieval and Flask RESTful APIs to handle conversations.
 
